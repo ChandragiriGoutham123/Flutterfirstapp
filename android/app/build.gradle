@@ -43,6 +43,10 @@ android {
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        minSdk = 15
+        targetSdk = 31
+        multiDexEnabled = true
+
     }
 
     buildTypes {
@@ -57,3 +61,4 @@ android {
 flutter {
     source '../..'
 }
+

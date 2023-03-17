@@ -1,14 +1,20 @@
 
 
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'authentication/splash_screen.dart';
 
 // Import the firebase_core plugin
 
 
 
-void main()=> runApp(const MaterialApp(
-  home: MyApp(),
-));
+void main(){
+  WidgetsFlutterBinding.ensureInitialized();
+
+Firebase.initializeApp();
+
+  runApp(MyApp());
+}
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -17,40 +23,13 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  int number = 0;
-   String str='';
 
-
-  void locations() {
-    setState(() {
-      number += 1;
-    });
-    str = number.toString();
-
-  }
-  void minus(){
-    setState(() {
-      number -= 1;
-    });
-   str = number.toString();
-  }
     @override
     Widget  build(BuildContext context) {
-      return Scaffold(
-        appBar: AppBar(title: Text(str),),
-        body: Row(
+      return MaterialApp(
+        title: 'flutter demo',
+        theme: ThemeData(
 
-          children:<Widget> [
-            Center(
-              child: ElevatedButton(
-
-                onPressed: locations,
-                child: const Text('add')),
-            ),
-            Center(
-              child: ElevatedButton(onPressed: minus, child: const Text('minus'),),
-            )
-          ],
         ),
       );
     }
