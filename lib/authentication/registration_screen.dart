@@ -4,6 +4,7 @@ import 'dart:js';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firstapp/authentication/Home_screen.dart';
+import 'package:firstapp/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/editable_text.dart';
 
@@ -43,7 +44,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             ),SizedBox(height: 20,),
             ElevatedButton(onPressed: () {
               login(_emailTextEditingController, _passwordTextEditingController);
-            }, child: Text("Login")),
+            }, child: Text("Register")),
             TextButton(onPressed: (){
               Navigator.pop(context);
             }
@@ -61,7 +62,7 @@ login(_emailTextEditingController,_passwordTextEditingController){
   print("$email and $password");
   FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password).then((value){
     ScaffoldMessenger.of(context as BuildContext).showSnackBar(SnackBar(content: Text("User account created")));
-    Navigator.pushAndRemoveUntil(context as BuildContext, MaterialPageRoute(builder: (ctx)=> HomeScreen()), (route) => false);
+    Navigator.pushAndRemoveUntil(context as BuildContext, MaterialPageRoute(builder: (ctx)=> MyApp()), (route) => false);
   })
       .catchError((e){
     ScaffoldMessenger.of(context as BuildContext).showSnackBar(SnackBar(content: Text("User acount creation failed"+e.toString())));

@@ -1,4 +1,5 @@
 
+import 'package:firstapp/centers_and_location.dart';
 import 'package:firstapp/drawer.dart';
 import 'package:firstapp/main.dart';
 import 'package:firstapp/sidedrawer.dart';
@@ -38,7 +39,7 @@ class DashBoard extends StatelessWidget {
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10)),
-                child: Text('sample'),alignment: Alignment.center,
+                child: Text('Area'),alignment: Alignment.center,
               ),
               onTap: () {
                 Navigator.push(context,
@@ -53,7 +54,22 @@ class DashBoard extends StatelessWidget {
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10)),
-                child: Text('Hello'),alignment: Alignment.center,
+                child: Text('Locations/centres'),alignment: Alignment.center,
+              ),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (Context) => const LocationAndCenters()));
+              },
+            ),
+            InkWell(
+              child: Container(
+                margin: EdgeInsets.only(left: 30, top: 30),
+                height: 80,
+                width: 160,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10)),
+                child: Text('Workstations'),alignment: Alignment.center,
               ),
               onTap: () {
                 print("Tapped on container");
@@ -67,7 +83,7 @@ class DashBoard extends StatelessWidget {
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10)),
-                child: Text('sample'),alignment: Alignment.center,
+                child: Text('potential Revenue'),alignment: Alignment.center,
               ),
               onTap: () {
                 print("Tapped on container");
@@ -81,7 +97,7 @@ class DashBoard extends StatelessWidget {
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10)),
-                child: Text('sample'),alignment: Alignment.center,
+                child: Text('Employee'),alignment: Alignment.center,
               ),
               onTap: () {
                 print("Tapped on container");
@@ -95,7 +111,7 @@ class DashBoard extends StatelessWidget {
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10)),
-                child: Text('sample'),alignment: Alignment.center,
+                child: Text('Revenue'),alignment: Alignment.center,
               ),
               onTap: () {
                 print("Tapped on container");
@@ -109,21 +125,7 @@ class DashBoard extends StatelessWidget {
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10)),
-                child: Text('sample'),alignment: Alignment.center,
-              ),
-              onTap: () {
-                print("Tapped on container");
-              },
-            ),
-            InkWell(
-              child: Container(
-                margin: EdgeInsets.only(left: 30, top: 30),
-                height: 80,
-                width: 160,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10)),
-                child: Text('Hello'),alignment: Alignment.center,
+                child: Text('Expenses'),alignment: Alignment.center,
               ),
               onTap: () {
                 print("Tapped on container");
@@ -136,7 +138,7 @@ class DashBoard extends StatelessWidget {
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10)),
-                child: Text('Hello'),alignment: Alignment.center,
+                child: Text('Occupancy'),alignment: Alignment.center,
               ),
               onTap: () {
                 print("Tapped on container");
@@ -149,7 +151,7 @@ class DashBoard extends StatelessWidget {
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10)),
-                child: Text('Hello'),alignment: Alignment.center,
+                child: Text('Clients'),alignment: Alignment.center,
               ),
               onTap: () {
                 print("Tapped on container");
@@ -162,7 +164,7 @@ class DashBoard extends StatelessWidget {
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10)),
-                child: Text('Hello'),alignment: Alignment.center,
+                child: Text('Happiness Index'),alignment: Alignment.center,
               ),
               onTap: () {
                 print("Tapped on container");
@@ -175,7 +177,7 @@ class DashBoard extends StatelessWidget {
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10)),
-                child: Text('Hello'),alignment: Alignment.center,
+                child: Text('Service Requests'),alignment: Alignment.center,
               ),
               onTap: () {
                 print("Tapped on container");
@@ -188,7 +190,7 @@ class DashBoard extends StatelessWidget {
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10)),
-                child: Text('Hello'),alignment: Alignment.center,
+                child: Text('Conf.Bookings'),alignment: Alignment.center,
               ),
               onTap: () {
                 print("Tapped on container");
@@ -201,7 +203,7 @@ class DashBoard extends StatelessWidget {
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10)),
-                child: Text('Hello'),alignment: Alignment.center,
+                child: Text('Leads'),alignment: Alignment.center,
               ),
               onTap: () {
                 print("Tapped on container");
@@ -214,7 +216,7 @@ class DashBoard extends StatelessWidget {
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10)),
-                child: Text('Hello'),alignment: Alignment.center,
+                child: Text('Lead Pipeline'),alignment: Alignment.center,
               ),
               onTap: () {
                 print("Tapped on container");
@@ -227,7 +229,7 @@ class DashBoard extends StatelessWidget {
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10)),
-                child: Text('Hello'),alignment: Alignment.center,
+                child: Text('Lead Closed'),alignment: Alignment.center,
               ),
               onTap: () {
                 print("Tapped on container");

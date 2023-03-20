@@ -3,15 +3,18 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'authentication/splash_screen.dart';
+import 'firebase_options.dart';
 
 // Import the firebase_core plugin
 
 
 
-void main(){
-  WidgetsFlutterBinding.ensureInitialized();
+void main() async {
+    WidgetsFlutterBinding.ensureInitialized();
 
-Firebase.initializeApp();
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
 
   runApp(MyApp());
 }
@@ -30,7 +33,7 @@ class _MyAppState extends State<MyApp> {
         title: 'flutter demo',
         theme: ThemeData(
 
-        ),
+        ),home: SplashScreen(),
       );
     }
   }
