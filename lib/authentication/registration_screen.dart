@@ -2,8 +2,10 @@
 
 import 'dart:js';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firstapp/authentication/Home_screen.dart';
+import 'package:firstapp/authentication/user_model.dart';
 import 'package:firstapp/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/editable_text.dart';
@@ -61,14 +63,25 @@ login(_emailTextEditingController,_passwordTextEditingController){
 
   print("$email and $password");
   FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password).then((value){
+    postDetailsToFire();
     ScaffoldMessenger.of(context as BuildContext).showSnackBar(SnackBar(content: Text("User account created")));
     Navigator.pushAndRemoveUntil(context as BuildContext, MaterialPageRoute(builder: (ctx)=> MyApp()), (route) => false);
   })
       .catchError((e){
     ScaffoldMessenger.of(context as BuildContext).showSnackBar(SnackBar(content: Text("User acount creation failed"+e.toString())));
   });
-      
 
+
+}
+postDetailsToFire()  async{
+  FirebaseFirestore firebaseFire =FirebaseFirestore.instance;
+  User? user = FirebaseAuth.instance.currentUser;
+  var uid = user?.uid;
+  var email = user?.email;
+  var name = user?.email?.split("@")[0];
+  UserModel userModel = UserModel(uid: '$uid', email: '$email', name: '$name', profileImage: '', timeStamp: null);
+  await firebaseFire.collection("users").doc(user?.uid).set(userModel.toMap());
+  ScaffoldMessenger.of(context as BuildContext).showSnackBar(SnackBar(content: Text("User account created")));
 }
 
 
