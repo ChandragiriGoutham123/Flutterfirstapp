@@ -58,7 +58,7 @@ class DashBoard extends StatelessWidget {
               ),
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (Context) => const LocationAndCenters()));
+                    MaterialPageRoute(builder: (Context) =>  LocationAndCenters()));
               },
             ),
             InkWell(

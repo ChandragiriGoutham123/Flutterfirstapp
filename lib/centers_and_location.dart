@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 // function to trigger the build process
-void main() => runApp(const LocationAndCenters());
+void main() => runApp( LocationAndCenters());
 
 _launchHyderabad() async {
   var url = Uri.parse(
@@ -18,7 +18,7 @@ _launchHyderabad() async {
 }
 
 _launchPune() async {
-  var url = Uri.parse("https://www.google.com/maps/d/viewer?mid=1Ufluk6RrYShZDh4hMC48qPuEDRg&ie=UTF8&hl=en&msa=0&ll=18.52465256713074%2C73.86296740000002&spn=0.080934%2C0.154495&z=12");
+  var url = Uri.parse("https://www.google.com/maps/d/viewer?mid=1L_Lje1sw3gbh7Qvt1uCGzZgw_VA&hl=en_US&ll=18.52779400000001%2C73.852158&z=17");
   if (await canLaunchUrl(url)) {
     await launchUrl(url);
   } else {
@@ -49,8 +49,12 @@ _launchVijayawada() async {
     throw 'Could not launch $url';
   }
 }
+
+
 class LocationAndCenters extends StatelessWidget {
-  const LocationAndCenters({Key? key}) : super(key: key);
+   bool hydcenters=false;
+   LocationAndCenters({Key? key}) : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {
@@ -58,58 +62,90 @@ class LocationAndCenters extends StatelessWidget {
       home: Scaffold(
         drawer: SideDrawerFixed(),
           appBar: AppBar(
-            title: const Text('Locations'),
+            title: const Text('Locations and centers'),
             backgroundColor: Colors.yellow,
           ),
-          body:
-          Column(
+          body:ListView(
 
-            children: <Widget>[
+    children: <Widget>[
+      Row(
 
-              Row(
-                children: <Widget>[
-                  Container(
-                      margin: EdgeInsets.all(20.0), child: Text('Hyderabad')),
-                  ElevatedButton(
-                      onPressed: _launchHyderabad, child: Text('View in map')),
-                ],
-              ),
-              Row(
-                children: <Widget>[
-                  Container(
-                      margin: EdgeInsets.all(40.0), child: Text('Pune')),
-                  ElevatedButton(
-                      onPressed: _launchPune, child: Text('View in map')),
-                ],
-              ),
-              Row(
-                children: <Widget>[
-                  Container(
-                      margin: EdgeInsets.all(20.0), child: Text('Bangalore')),
-                  ElevatedButton(
-                      onPressed: _launchBangalore, child: Text('View in map')),
-                ],
-              ),
-              Row(
+       children: <Widget>[
+         Container(
+           margin: EdgeInsets.all(12),
+         child: TextButton(onPressed: (){
 
-                children: <Widget>[
-                  Container(
-                      margin: EdgeInsets.all(30.0), child: Text('Chennai')),
-                  ElevatedButton(
-                      onPressed: _launchChennai, child: Text('View in map')),
+            hydcenters=!hydcenters;
+            print(hydcenters);
+         },child: Text('Bangalore'),),
+         ),Container(
+           margin: EdgeInsets.only(left: 23),
+           child: ElevatedButton(onPressed: (){
+               _launchBangalore();
+    }, child: Text('View in map')),
+         ),if (hydcenters)...[
+              Column(
+                children: [
+                  ElevatedButton(onPressed: null,child: Text("Hello"),),
                 ],
-              ),
-              Row(
+              )
+         ]]),
+      Row(
 
-                children: <Widget>[
-                  Container(
-                      margin: EdgeInsets.all(20.0), child: Text('Vijayawada')),
-                  ElevatedButton(
-                      onPressed: _launchVijayawada, child: Text('View in map')),
-                ],
-              ),
-            ],
-          )),
+          children: <Widget>[
+            Container(
+              margin: EdgeInsets.all(12),
+              child: Text("Chennai"),
+            ),Container(
+              margin: EdgeInsets.only(left: 33),
+              child: ElevatedButton(onPressed: (){
+                _launchChennai();
+              }, child: Text('View in map')),
+            ),
+          ]),Row(
+
+          children: <Widget>[
+            Container(
+              margin: EdgeInsets.all(12),
+              child: Text("Hyderabad"),
+            ),Container(
+              margin: EdgeInsets.only(left: 15),
+              child: ElevatedButton(onPressed: (){
+                _launchHyderabad();
+              }, child: Text('View in map')),
+            ),
+          ]),Row(
+
+          children: <Widget>[
+            Container(
+              margin: EdgeInsets.all(12),
+              child: Text("Pune"),
+            ),Container(
+              margin: EdgeInsets.only(left: 50),
+              child: ElevatedButton(onPressed: (){
+                _launchPune();
+              }, child: Text('View in map')),
+            ),
+          ]),Row(
+
+          children: <Widget>[
+            Container(
+              margin: EdgeInsets.all(10),
+              child: Text("Vijayawada"),
+            ),Container(
+              margin: EdgeInsets.only(left: 15),
+              child: ElevatedButton(onPressed: (){
+                _launchVijayawada();
+              }, child: Text('View in map')),
+            ),
+          ]),
+    ],
+    )
+      )
     );
+
+
+
   }
 }
+
