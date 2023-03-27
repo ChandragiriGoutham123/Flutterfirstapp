@@ -1,3 +1,4 @@
+import 'package:firstapp/service_requests_with_floating_button.dart';
 import 'package:flutter/material.dart';
 
 import 'dashboard.dart';
@@ -48,7 +49,9 @@ void main()=> runApp(MaterialApp(
                      padding: const EdgeInsets.only(left: 20),
                      child: ListTile(
                        title:  Text('ServiceRequest'),
-                       onTap: () {},
+                       onTap: () {
+                         Navigator.push(context, MaterialPageRoute(builder: (context)=> ServiceWithFloatingButton()));
+                       },
                      )),
                  Padding(
                      padding: const EdgeInsets.only(left: 20),
